@@ -59,9 +59,40 @@ def firstNonRepeatCharacter(s):
             found=0                             # else set found flag to 0 for next iteration
     return retValue                             # return value
 
+#6) How to count the occurrence of a given character in a String? (solution)
+def countLetterOccurances(s,l):
+    retValue=0                                  # initialize return value
+    for i in range(len(s)):                     # iterate through the string
+        if s[i]==l:                             # check if the current letter is the letter to check count for
+            retValue += 1                       # add 1 to retValue
+    return retValue                             # return retvalue
+
+#7) How to check if two String are Anagram? (solution)
+def checkAngrams(s1,s2):
+    retValue="false"                            # initialize return value ~~ sorry for the negativity ;)
+    found=0                                     # flag variable to look for occurances of S1 letter in S2
+    foundRev=0                                  # flag variable to look for occurances of S2 letter in S1
+    if len(s1)!=len(s2):                        # check if lengths of the 2 string are not equal
+        return retValue                         # return false
+    for i in range(len(s1)):                    # iterate through the first string
+        for j in range(len(s2)):                # iterate through second string to check each letter of the first string
+            if s1[i]==s2[j]:                    # check current letter through out the second string
+                    found=1                         # set flag to 1
+            if s2[i]==s1[j]:                    # check current letter through out the second string
+                foundRev=1                         # set flag to 1
+        if found==0 or foundRev==0:
+            return retValue                     # if letter is not found return false
+        else:
+            found=0                             # if letter is found continue the loop
+            foundRev=0                             # if letterRev is found continue the loop
+
+    retValue="true"
+    return retValue                             # return true if loops end with all letters matched
 
 print (isPalindrome("maham"))
 print (removeLetter("farzhan azhmed","z"))
 stringPermutationsRecursive("","abc")
 print (longestPalindrome("asaaaa"))
 print (firstNonRepeatCharacter("the quick brown fox jumps over the lazy dog"))
+print (countLetterOccurances("the quick brown fox jumps over the lazy dog","e"))
+print (checkAngrams("ana","aan"))
